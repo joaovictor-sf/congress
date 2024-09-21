@@ -8,7 +8,8 @@ import java.time.LocalDate;
 
 @Component
 public class ArtigoMapper {
-    public ArtigoDTO toDTO(Artigo artigo) {
+
+    public static ArtigoDTO toDTO(Artigo artigo) {
         ArtigoDTO dto = new ArtigoDTO();
         dto.setId(artigo.getId());
         dto.setTitulo(artigo.getTitulo());
@@ -20,13 +21,14 @@ public class ArtigoMapper {
         return dto;
     }
 
-    public Artigo toEntity(ArtigoDTO dto) {
+    public static Artigo toEntity(ArtigoDTO dto, LocalDate dataSubmissao) {
         Artigo artigo = new Artigo();
         artigo.setId(dto.getId());
         artigo.setTitulo(dto.getTitulo());
         artigo.setResumo(dto.getResumo());
         artigo.setArquivo(dto.getArquivo());
-        artigo.setDataSubmissao(LocalDate.parse(dto.getDataSubmissao()));
+        artigo.setDataSubmissao(dataSubmissao);
+        //artigo.setDataSubmissao(LocalDate.parse(dto.getDataSubmissao()));
         //artigo.setAutor(new Participante(dto.getAutorId()));
         //artigo.setEmailsAutores(dto.getEmailsAutores());
         return artigo;

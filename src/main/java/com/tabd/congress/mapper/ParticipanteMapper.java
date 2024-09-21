@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 @Component
 public class ParticipanteMapper {
-    public ParticipanteDTO toDTO(Participante participante) {
+    public static ParticipanteDTO toDTO(Participante participante) {
         ParticipanteDTO dto = new ParticipanteDTO();
         dto.setId(participante.getId());
         dto.setName(participante.getName());
@@ -24,7 +24,7 @@ public class ParticipanteMapper {
         return dto;
     }
 
-    public Participante toEntity(ParticipanteDTO dto) {
+    public static Participante toEntity(ParticipanteDTO dto) {
         Participante participante = new Participante();
         participante.setId(dto.getId());
         participante.setName(dto.getName());
