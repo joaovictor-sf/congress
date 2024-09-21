@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -22,15 +23,15 @@ public class Artigo {
     private String titulo;
     private String resumo;
     private String arquivo;
-    private String dataSubmissao;
+    private LocalDate dataSubmissao;
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "autor_id")
     private Participante autor;
 
     @ElementCollection
     @CollectionTable(name = "emails_autores", joinColumns = @JoinColumn(name = "artigo_id"))
     @Column(name = "email")
-    private List<String> emailsAutores;
+    private List<String> emailsAutores;*/
 
 }

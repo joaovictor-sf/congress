@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -26,11 +27,11 @@ public class Participante {
     private String localEmprego;
     private String email;
     private String numeroCartaoDeCredito;
-    private Date dataDeValidade;
+    private LocalDate dataDeValidade;
     private String marcaCartao;
     private Boolean isRevisor;
 
-    @OneToMany(mappedBy = "autor")
-    private List<Artigo> artigos;
+    //@OneToMany(mappedBy = "autor")
+    //private List<Artigo> artigos;
 
 }
