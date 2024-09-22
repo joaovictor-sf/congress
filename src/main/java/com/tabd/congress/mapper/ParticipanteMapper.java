@@ -24,7 +24,7 @@ public class ParticipanteMapper {
         return dto;
     }
 
-    public static Participante toEntity(ParticipanteDTO dto) {
+    public static Participante toEntity(ParticipanteDTO dto, LocalDate dataDeValidade) {
         Participante participante = new Participante();
         participante.setId(dto.getId());
         participante.setName(dto.getName());
@@ -33,7 +33,7 @@ public class ParticipanteMapper {
         participante.setLocalEmprego(dto.getLocalEmprego());
         participante.setEmail(dto.getEmail());
         participante.setNumeroCartaoDeCredito(dto.getNumeroCartaoDeCredito());
-        participante.setDataDeValidade(LocalDate.parse(dto.getDataDeValidade()));
+        participante.setDataDeValidade(dataDeValidade);
         participante.setMarcaCartao(dto.getMarcaCartao());
         participante.setIsRevisor(dto.getIsRevisor());
         //participante.setArtigos(dto.getArtigosId().stream().map(id -> new Artigo(id)).collect(Collectors.toList()));
