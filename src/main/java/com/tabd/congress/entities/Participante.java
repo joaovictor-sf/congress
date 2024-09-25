@@ -1,5 +1,6 @@
 package com.tabd.congress.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,11 +8,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
 
 @Entity
-@Table(name = "participantes")
+@Table(name = "participante")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -21,15 +20,25 @@ public class Participante {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String street;
-    private String cellphone;
+    @Column(name = "nome")
+    private String nome;
+    @Column(name = "endereco")
+    private String endereco;
+    @Column(name = "telefone")
+    private String telefone;
+    @Column(name = "localemprego")
     private String localEmprego;
+    @Column(name = "email")
     private String email;
-    private String numeroCartaoDeCredito;
-    private LocalDate dataDeValidade;
-    private String marcaCartao;
-    private Boolean isRevisor;
+    @Column(name = "numerocartaocredito")
+    private String numeroCartaoCredito;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "datavencimentocartao")
+    private LocalDate dataVencimentoCartao;
+    @Column(name = "marcacartaocredito")
+    private String marcaCartaoCredito;
+    @Column(name = "voluntariorevisor")
+    private Boolean voluntarioRevisor;
 
     //@OneToMany(mappedBy = "autor")
     //private List<Artigo> artigos;

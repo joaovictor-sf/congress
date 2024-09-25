@@ -18,9 +18,7 @@ public class ArtigoServiceImpl implements ArtigoService {
 
     @Override
     public ArtigoDTO save(ArtigoDTO artigoDTO) {
-        LocalDate dataSubmissao = LocalDate.now();
-        //artigoDTO.setDataSubmissao(dataSubmissao.toString());
-        Artigo artigo = ArtigoMapper.toEntity(artigoDTO, dataSubmissao);
+        Artigo artigo = ArtigoMapper.toEntity(artigoDTO);
         artigoRepository.save(artigo);
         return ArtigoMapper.toDTO(artigo);
     }

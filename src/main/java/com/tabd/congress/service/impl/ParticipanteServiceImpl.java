@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 @Service
 @AllArgsConstructor
@@ -17,9 +19,9 @@ public class ParticipanteServiceImpl implements ParticipanteService {
 
     @Override
     public ParticipanteDTO save(ParticipanteDTO participanteDTO) {
-        LocalDate DataDeValidade = LocalDate.parse(participanteDTO.getDataDeValidade());
-        //participanteDTO.setDataSubmissao(dataSubmissao.toString());
-        Participante participante = ParticipanteMapper.toEntity(participanteDTO, DataDeValidade);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate dataDeValidade = LocalDate.parse(participanteDTO.getDataVencimentoCartao(), formatter);
+        Participante participante = ParticipanteMapper.toEntity(participanteDTO);
         participanteRepository.save(participante);
         return ParticipanteMapper.toDTO(participante);
     }

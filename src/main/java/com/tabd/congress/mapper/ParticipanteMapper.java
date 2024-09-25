@@ -5,37 +5,43 @@ import com.tabd.congress.entities.Participante;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Component
 public class ParticipanteMapper {
     public static ParticipanteDTO toDTO(Participante participante) {
         ParticipanteDTO dto = new ParticipanteDTO();
         dto.setId(participante.getId());
-        dto.setName(participante.getName());
-        dto.setStreet(participante.getStreet());
-        dto.setCellphone(participante.getCellphone());
+        dto.setNome(participante.getNome());
+        dto.setEndereco(participante.getEndereco());
+        dto.setTelefone(participante.getTelefone());
         dto.setLocalEmprego(participante.getLocalEmprego());
         dto.setEmail(participante.getEmail());
-        dto.setNumeroCartaoDeCredito(participante.getNumeroCartaoDeCredito());
-        dto.setDataDeValidade(participante.getDataDeValidade().toString());
-        dto.setMarcaCartao(participante.getMarcaCartao());
-        dto.setIsRevisor(participante.getIsRevisor());
+        dto.setNumeroCartaoCredito(participante.getNumeroCartaoCredito());
+        if (participante.getDataVencimentoCartao() != null) {
+            dto.setDataVencimentoCartao(participante.getDataVencimentoCartao().toString());
+        }
+        dto.setMarcaCartaoCredito(participante.getMarcaCartaoCredito());
+        dto.setVoluntarioRevisor(participante.getVoluntarioRevisor());
         //dto.setArtigosId(participante.getArtigos().stream().map(Artigo::getId).collect(Collectors.toList()));
         return dto;
     }
 
-    public static Participante toEntity(ParticipanteDTO dto, LocalDate dataDeValidade) {
+    public static Participante toEntity(ParticipanteDTO dto) {
         Participante participante = new Participante();
         participante.setId(dto.getId());
-        participante.setName(dto.getName());
-        participante.setStreet(dto.getStreet());
-        participante.setCellphone(dto.getCellphone());
+        participante.setNome(dto.getNome());
+        participante.setEndereco(dto.getEndereco());
+        participante.setTelefone(dto.getTelefone());
         participante.setLocalEmprego(dto.getLocalEmprego());
         participante.setEmail(dto.getEmail());
-        participante.setNumeroCartaoDeCredito(dto.getNumeroCartaoDeCredito());
-        participante.setDataDeValidade(dataDeValidade);
-        participante.setMarcaCartao(dto.getMarcaCartao());
-        participante.setIsRevisor(dto.getIsRevisor());
+        participante.setNumeroCartaoCredito(dto.getNumeroCartaoCredito());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        if (dto.getDataVencimentoCartao() != null && !dto.getDataVencimentoCartao().isEmpty()) {
+            participante.setDataVencimentoCartao(LocalDate.parse(dto.getDataVencimentoCartao(), formatter));
+        }
+        participante.setMarcaCartaoCredito(dto.getMarcaCartaoCredito());
+        participante.setVoluntarioRevisor(dto.getVoluntarioRevisor());
         //participante.setArtigos(dto.getArtigosId().stream().map(id -> new Artigo(id)).collect(Collectors.toList()));
         return participante;
     }

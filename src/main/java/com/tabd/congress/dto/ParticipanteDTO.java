@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -14,14 +15,14 @@ import java.util.List;
 @NoArgsConstructor
 public class ParticipanteDTO {
     private Long id;
-    private String name;
-    private String street;
-    private String cellphone;
+    private String nome;
+    private String endereco;
+    private String telefone;
     private String localEmprego;
     private String email;
-    private String numeroCartaoDeCredito;
-    private String dataDeValidade;
-    private String marcaCartao;
-    private Boolean isRevisor;
+    private String numeroCartaoCredito;
+    private String dataVencimentoCartao;
+    private String marcaCartaoCredito;
+    private Boolean voluntarioRevisor;
     //private List<Long> artigosId;
 }

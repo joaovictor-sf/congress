@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name = "artigos")
+@Table(name = "artigo")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -20,9 +20,13 @@ public class Artigo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     //titulo, resumo, arquivo(base64 e armazenar o caminho), data de submissão e emails dos autores
+    @Column(name = "titulo")
     private String titulo;
+    @Column(name = "resumo")
     private String resumo;
-    private String arquivo;
+    @Column(name = "arquivopdf")
+    private String arquivoPDF;
+    @Column(name = "datasubmissao")
     private LocalDate dataSubmissao;
 
     /*@ManyToOne

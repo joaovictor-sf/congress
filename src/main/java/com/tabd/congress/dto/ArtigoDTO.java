@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
@@ -16,7 +17,7 @@ public class ArtigoDTO {
     private Long id;
     private String titulo;
     private String resumo;
-    private String arquivo;
+    private String arquivoPDF;
     private String dataSubmissao;
     //private Long autorId;
     //private List<String> emailsAutores;
